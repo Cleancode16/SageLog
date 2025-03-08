@@ -1,0 +1,1 @@
+{"name":"Local: sample","url":"c:\\Users\\bhara\\Blog App\\sample.cpp","tests":[{"id":1739627021421,"input":"3\n4\n3 1 4 2\n2\n1 1\n3\n1 1 0\n","output":"4\n1\n1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\bhara\\Blog App\\sample.cpp","group":"local","local":true}

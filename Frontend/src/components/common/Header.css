@@ -1,0 +1,120 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root{
+  --royal-blue:#002349;
+  --blue:#96C2DB;
+  --grey:#E5EDF1;
+  --white:#FFFFFF;
+  --cream:#FFFDF2;
+  --white-smoke:#F0F0F0;
+  --bright-red:#E7473C;
+  
+}
+.articlecards{
+  background-color: #2E2E3E;
+}
+body{
+  /* background-color: var(--white-smoke); */
+  background-color: white;
+  /* color: white; */
+}
+
+
+.footer{
+  background-color: black;
+  border-top: 3px solid white;
+}
+.header{
+  color: black;
+  background-color:white;
+  border-bottom: 3px solid black;
+  margin-bottom: 50px;
+  /* background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,11,1) 60%, rgba(0,212,255,1) 100%); */
+  text-decoration: none;
+}
+.header a{
+  text-decoration: none;
+  color: black;
+}
+.header-links{
+  width: 400px;
+  
+}
+.profile{
+ height: 225px;
+  width: 1300px;
+  background-color: black;
+  color: white ;
+}
+.signup{
+  padding-right: -50px;
+}
+.card1{
+  width: 200px;
+background-color: white; 
+color:white ;
+
+border-radius: 20px;
+  }
+  .admin{
+    height: 280px;
+    width: 300px;
+  }
+.adminIcon{
+font-size: 120px;
+}
+  .articlecard{
+    background-color:black; 
+    color: white ;
+
+  }
+.articleBanner{
+  width: 800px;
+  height: auto;
+  margin-top: 0px;
+}
+.paracontent{
+  font-weight: 450;
+  background-color: white;
+  color: black;
+  border: 2px solid gray;
+}
+.info,.info2{
+  font-size: 80px;
+  text-align: center;
+}
+.editRestoreButton{
+  margin-right: 30px;
+  margin-top: 20px;
+}
+.info{
+  margin-top: 100px;
+}
+.info2{
+  margin-left: 40px;
+}
+.homeimg{
+  /* filter: drop-shadow(0 0 10px white); */
+  margin-top: 46px;
+  height: 600px;
+}
+.para{
+margin-left: 58px;
+}
+.signoutButton{
+  margin: auto;
+  display: block;
+  color: aliceblue;
+  background-color: black;
+  width: 200px;
+  height: 60px;
+}
+.signoutButton:hover{
+  background-color: rgb(197, 9, 9);
+  color: white;
+  margin: 10px;
+  font-size: 25px;
+}
