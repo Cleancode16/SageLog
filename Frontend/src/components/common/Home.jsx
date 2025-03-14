@@ -47,7 +47,7 @@ if(selectedRole==='admin'){
   res=await axios.post('http://localhost:3000/admin-api/admin',currentUser);
   
   let {message,payload}=res.data;
-  if(message==='admin'&&email==='devasanibharath6@gmail.com'){
+  if(message==='admin'){
     setCurrentUser({...currentUser,...payload})
     //save user to local storage
     localStorage.setItem("currentUser",JSON.stringify(payload))
