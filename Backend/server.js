@@ -5,7 +5,13 @@ const cors=require('cors')
 const app=express();
 
 //body parser middleware
-app.use(cors());
+app.use(cors({
+  origin: ["https://deploy-mern-lwhq.vercel.app"],
+methods: ["POST", "GET"],
+credentials: true
+}
+
+));
 app.use(express.json())
 const port=process.env.port||4000;
 mongoose.connect(process.env.DBURL).then(()=>app.listen(port,()=>
