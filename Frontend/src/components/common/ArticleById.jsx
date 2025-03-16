@@ -115,32 +115,32 @@ async function addComment(commentObj) {
           <div className="d-flex justify-content-between "> 
               <div className="author-block w-100 px-4 py-2 rounded-2 d-flex justify-content-between align-items-center articlecard">
                 <div className='articleBanner'>
-                  <p className="fs-1 me-4">{state.title}</p>
+                  <p className="fs-1 me-4">{currentArticle.title}</p>
                
                   {/* doc & dom */}
                   <span className="py-3">
                     <small className="text-light me-4">
-                      created on:{state.dateofCreation}
+                      created on:{currentArticle.dateofCreation}
                     </small>
                     <small className="text-light me-4">
-                    Modified on:{state.dateofModification}
+                    Modified on:{currentArticle.dateofModification}
                     </small>
                   </span>
                 </div>
                 {/* author details */}
                 <div className="author-deatils text-center">
                   <div className="mt-4">
-                    <img src={state.authorData.profileimageURL} width='60px' className='rounded-circle'alt="" />
-                    <p>{state.authorData.nameofauthor}</p>
+                    <img src={currentArticle.authorData.profileimageURL} width='60px' className='rounded-circle'alt="" />
+                    <p>{currentArticle.authorData.nameofauthor}</p>
                   {
-                  (currentUser.role === 'author' && currentUser.firstName === state.authorData.nameofauthor)&&<> {/* edit & delete */}
+                  (currentUser.role === 'author' && currentUser.firstName === currentArticle.authorData.nameofauthor)&&<> {/* edit & delete */}
                   <button className='me-2 btn btn-light h-100 bg-secondary mt-5' height='40px' onClick={()=>enableEdit()}>
                   <FaEdit className='text-warning'/>
                   </button>
                   {/* if article is active ,display delete icon,otherwise display restore icon */}
 
                   {
-                  state.isArticleActive===true?(<button className="btn btn-light h-100 mt-5 bg-secondary" onClick={()=>deleteArticle()}>
+                  currentArticle.isArticleActive===true?(<button className="btn btn-light h-100 mt-5 bg-secondary" onClick={()=>deleteArticle()}>
                   <MdDelete className='h-50 text-danger fs-4'/>
                   </button>
                   ):(<button className='btn btn-secondary h-100 mt-5' onClick={()=>restoreArticle()}>
@@ -157,7 +157,7 @@ async function addComment(commentObj) {
             {/* if article is active ,display delete icon,otherwise display restore icon */}
 
             {
-              state.isArticleActive===true?(<button className='btn editRestoreButton btn-light bg-light ' onClick={()=>deleteArticle()}>
+              currentArticle.isArticleActive===true?(<button className='btn editRestoreButton btn-light bg-light ' onClick={()=>deleteArticle()}>
                 <MdBlock className=' m-2 text-info fs-4' />
               </button>
                  ):(<button className='btn editRestoreButton btn-light' onClick={()=>restoreArticle()}>
@@ -170,15 +170,15 @@ async function addComment(commentObj) {
             </div>
 
             {/* contents */}
-            <p className="fs-5 mt-3 article-content bg-light p-3 rounded-3 paracontent" style={{whiteSpace:"pre-line"}}>{state.content}</p>
+            <p className="fs-5 mt-3 article-content bg-light p-3 rounded-3 paracontent" style={{whiteSpace:"pre-line"}}>{currentArticle.content}</p>
             {/* user comments */}
             <div>
               <div className="comments">
             <p className='fs-3 fw-bold'><MdComment className='fs-1 m-2' /> Comments</p>  
             { 
-            state.comments.length===0?<p className='dispaly-3'>No Comments yet...</p>:
+            currentArticle.comments.length===0?<p className='dispaly-3'>No Comments yet...</p>:
             
-              state.comments.map((commentObj)=>{
+              currentArticle.comments.map((commentObj)=>{
                 return <div key={commentObj._id}>
                          <div className="card m-2 p-3 bg-secondary">
                          <p className='user-name text-light fw-semibold fs-5 '>
@@ -222,7 +222,7 @@ async function addComment(commentObj) {
                     type="text"
                     className="form-control"
                     id="title"
-                    defaultValue={state.title}
+                    defaultValue={currentArticle.title}
                     {...register('title')}
                  
                   />
@@ -238,7 +238,7 @@ async function addComment(commentObj) {
                
                     id="category"
                     className="form-select"
-                    defaultValue={state.category}
+                    defaultValue={currentArticle.category}
                     {...register('category')}
                   >
                     <option value="" disabled>--categories--</option>
@@ -258,7 +258,7 @@ async function addComment(commentObj) {
                     className="form-control"
                     id="content"
                     rows="10"
-                    defaultValue={state.content}
+                    defaultValue={currentArticle.content}
                     {...register('content')}
                   ></textarea>
                   {/* title validation err msg */}
