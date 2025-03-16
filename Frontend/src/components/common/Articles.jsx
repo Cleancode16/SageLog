@@ -24,7 +24,7 @@ function Articles() {
     const token=await getToken();
      if(currentUser.role==='admin'||currentUser.role==='author'){
       //make authenticated request
-      let res = await axios.get('http://localhost:3000/author-api/articles',{headers:{
+      let res = await axios.get('https://sagelog.onrender.com/author-api/articles',{headers:{
         Authorization:`Bearer ${token}`
      }})
      console.log('articles')
@@ -36,7 +36,7 @@ function Articles() {
      setError(res.data.message);
      }
      }else{
-      let res = await axios.get('http://localhost:3000/user-api/articles',{headers:{
+      let res = await axios.get('https://sagelog.onrender.com/user-api/articles',{headers:{
         Authorization:`Bearer ${token}`
      }})
      console.log('articles')
