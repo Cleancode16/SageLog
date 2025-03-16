@@ -84,7 +84,7 @@ if(!state) return <p>Loading article...</p>
       commentObj.nameofuser=currentUser.firstName;
       commentObj.comment=commentObj.comments;
       commentObj.commentId = Date.now();
-      let res = await axios.put(`http://localhost:3000/user-api/comment/${currentArticle.articleId}`, commentObj)
+      let res = await axios.put(`https://sagelog.onrender.com/user-api/comment/${currentArticle.articleId}`, commentObj)
       if(res.status === 200 ){
         console.log("successfuly commented");
       setCommentState(res.data.message)
