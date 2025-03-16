@@ -80,19 +80,29 @@ if(!state) return <p>Loading article...</p>
   const [commentState, setCommentState] = useState('')
 
     {/* add comment function */}
- async function addComment(commentObj) {
-      console.log('comment obj', commentObj)
-      commentObj.nameofuser=currentUser.firstName;
-      commentObj.comment=commentObj.comments;
-      commentObj.commentId = Date.now();
-      let res = await axios.put(`https://sagelog.onrender.com/user-api/comment/${currentArticle.articleId}`, commentObj)
-      if(res.status === 200 ){
-        console.log("successfuly commented");
-       setCommentState(res.data.message);
-       setCurrentArticle(res.data.payload);
-        reset();
+async function addComment(commentObj) {
+    try {
+        console.log('Comment object:', commentObj);
+        commentObj.nameofuser = currentUser.firstName;
+        commentObj.comment = commentObj.comments;  
+        commentObj.commentId = Date.now();
+        let res = await axios.put(
+            `https://sagelog.onrender.com/user-api/comment/${currentArticle.articleId}`,
+            commentObj
+        );
+    if (res.status === 200) {
+            console.log("Successfully added comment");
+            setCommentState("Comment added successfully!");
+            setCurrentArticle(res.data.payload);
+            reset();  // Clear form
+        } else {
+            console.log("Error adding comment", res);
+        }
+    } catch (error) {
+        console.error("Error in adding comment:", error);
     }
-      }
+}
+
     
 
     console.log(currentUser.role);
