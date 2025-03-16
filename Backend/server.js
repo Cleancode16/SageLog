@@ -5,7 +5,14 @@ const cors=require('cors')
 const app=express();
 
 //body parser middleware
-app.use(cors());
+app.use(cors({
+    origin: [
+      "https://sage-log.vercel.app",
+      "https://sage-log-devasani-bharaths-projects.vercel.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, 
+  }));
 app.use(express.json())
 const port=process.env.port||4000;
 mongoose.connect(process.env.DBURL).then(()=>app.listen(port,()=>
