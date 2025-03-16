@@ -67,14 +67,14 @@ if(!state) return <p>Loading article...</p>
   }
 
   // blocking article function
-  // async function blockArticle(){
-  //   state.isArticleActive=false;
-  //   let res=await axios.put(`https://sagelog.onrender.com/admin-api/block/:articleId${state.articleId}`,state);
-  //   if(res.status==200){
-  //     console.log("successfully blocked");
-  //     setCurrentArticle(res.data.payload);
-  //   }
-  // }
+  async function blockArticle(){
+    state.isArticleActive=false;
+    let res=await axios.put(`https://sagelog.onrender.com/admin-api/block/:articleId${state.articleId}`,state);
+    if(res.status==200){
+      console.log("successfully blocked");
+      setCurrentArticle(res.data.payload);
+    }
+  }
   
   {/* comment state */}
   const [commentState, setCommentState] = useState('')
