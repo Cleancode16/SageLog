@@ -11,8 +11,9 @@ import axios from 'axios';
 import {useAuth} from '@clerk/clerk-react'
 import { Navigate } from 'react-router-dom';
 import './Header.css'
+
 function ArticleById() {
-const {register,handleSubmit,formState:{errors}}=useForm();
+const {register,handleSubmit,formState:{errors},reset}=useForm();
 const navigate=useNavigate();
 const {getToken}=useAuth();
 const {state}= useLocation();
@@ -87,13 +88,12 @@ if(!state) return <p>Loading article...</p>
       let res = await axios.put(`https://sagelog.onrender.com/user-api/comment/${currentArticle.articleId}`, commentObj)
       if(res.status === 200 ){
         console.log("successfuly commented");
-      // setCommentState(res.data.message)
-        setCurrentArticle(prevArticle => ({
-      ...prevArticle,
-      comments: [...prevArticle.comments, commentObj] // Append new comment
-    }));
-      }
+       setCommentState(res.data.message);
+       setCurrentArticle(res.data.payload);
+        reset();
     }
+      }
+    
 
     console.log(currentUser.role);
   return (
