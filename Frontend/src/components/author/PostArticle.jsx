@@ -42,7 +42,7 @@ function PostArticle() {
     console.log(articleObj)
     // http post req to create new article
     let res=null;
-    res=await axios.post('https://sagelog.onrender.com/article', articleObj);
+    res=await axios.post('https://sagelog.onrender.com/author-app/article', articleObj);
     let {message,payload}=res.data;
     if(res.status===201){
       navigate(`/author-profile/${currentUser.email}/articles`)
