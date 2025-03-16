@@ -32,7 +32,7 @@ currentUser.role=selectedRole;
 console.log(currentUser.role);
 let res=null;
 if(selectedRole==='author'){
-res=await axios.post('http://localhost:3000/author-api/author',currentUser);
+res=await axios.post('https://sagelog.onrender.com/author-api/author',currentUser);
 
 let {message,payload}=res.data;
 if(message==='author'){
@@ -44,7 +44,7 @@ if(message==='author'){
 }
 }
 if(selectedRole==='admin'){
-  res=await axios.post('http://localhost:3000/admin-api/admin',currentUser);
+  res=await axios.post('https://sagelog.onrender.com/admin-api/admin',currentUser);
   
   let {message,payload}=res.data;
   if(message==='admin'){
@@ -57,7 +57,7 @@ if(selectedRole==='admin'){
   }
 
 if(selectedRole==='user'){
-  res=await axios.post('http://localhost:3000/user-api/user',currentUser);
+  res=await axios.post('https://sagelog.onrender.com/user-api/user',currentUser);
   let {message,payload}=res.data;
 if(message==='user'){
   setCurrentUser({...currentUser,...payload})
