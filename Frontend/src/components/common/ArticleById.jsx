@@ -10,7 +10,7 @@ import {MdDelete,MdRestore} from 'react-icons/md'
 import axios from 'axios';
 import {useAuth} from '@clerk/clerk-react'
 import { Navigate } from 'react-router-dom';
-import './header.css'
+import './Header.css'
 function ArticleById() {
 const {register,handleSubmit,formState:{errors}}=useForm();
 const navigate=useNavigate();
