@@ -79,18 +79,15 @@ if(!state) return <p>Loading article...</p>
   const [commentState, setCommentState] = useState('')
 
     {/* add comment function */}
-  async function addComment(commentObj) {
+ async function addComment(commentObj) {
       console.log('comment obj', commentObj)
       commentObj.nameofuser=currentUser.firstName;
       commentObj.comment=commentObj.comments;
       commentObj.commentId = Date.now();
-      let res = await axios.put(https://sagelog.onrender.com/user-api/comment/${currentArticle.articleId}, commentObj)
+      let res = await axios.put(`http://localhost:3000/user-api/comment/${currentArticle.articleId}`, commentObj)
       if(res.status === 200 ){
         console.log("successfuly commented");
-    setCurrentArticle(prevArticle => ({
-      ...prevArticle,
-      comments: [...prevArticle.comments, commentObj] // Append new comment
-    }));
+      setCommentState(res.data.message)
       }
     }
 
