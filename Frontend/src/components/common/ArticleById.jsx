@@ -34,7 +34,7 @@ if(!state) return <p>Loading article...</p>
 
     //make http put rrequest
     const token=await getToken();
-    let res=await axios.put(`http://localhost:3000/author-api/article/${articleAfterChanges.articleId}`,articleAfterChanges,{headers:{
+    let res=await axios.put(`https://sagelog.onrender.com/author-api/article/${articleAfterChanges.articleId}`,articleAfterChanges,{headers:{
       Authorization:`Bearer ${token}`
     }});
     if(res.status===200){
@@ -48,7 +48,7 @@ if(!state) return <p>Loading article...</p>
   //delete article function
   async function deleteArticle(){
     state.isArticleActive=false;
-  let res=await axios.put(`http://localhost:3000/author-api/article/update/${state.articleId}`,state);
+  let res=await axios.put(`https://sagelog.onrender.com/author-api/article/update/${state.articleId}`,state);
   if(res.status==200){
     console.log("successfully deleted");
    setCurrentArticle(res.data.payload);
@@ -58,7 +58,7 @@ if(!state) return <p>Loading article...</p>
   async function restoreArticle(){
     console.log('restore');
     state.isArticleActive=true;
-    let res=await axios.put(`http://localhost:3000/author-api/article/update/:articleId${state.articleId}`,state);
+    let res=await axios.put(`https://sagelog.onrender.com/author-api/article/update/:articleId${state.articleId}`,state);
     if(res.status==200){
       console.log("successfully restored");
       setCurrentArticle(res.data.payload);
@@ -68,7 +68,7 @@ if(!state) return <p>Loading article...</p>
   // blocking article function
   // async function blockArticle(){
   //   state.isArticleActive=false;
-  //   let res=await axios.put(`http://localhost:3000/admin-api/block/:articleId${state.articleId}`,state);
+  //   let res=await axios.put(`https://sagelog.onrender.com/admin-api/block/:articleId${state.articleId}`,state);
   //   if(res.status==200){
   //     console.log("successfully blocked");
   //     setCurrentArticle(res.data.payload);
@@ -84,7 +84,7 @@ if(!state) return <p>Loading article...</p>
       commentObj.nameofuser=currentUser.firstName;
       commentObj.comment=commentObj.comments;
       commentObj.commentId = Date.now();
-      let res = await axios.put(`http://localhost:3000/user-api/comment/${currentArticle.articleId}`, commentObj)
+      let res = await axios.put(`https://sagelog.onrender.com/user-api/comment/${currentArticle.articleId}`, commentObj)
       if(res.status === 200 ){
         console.log("successfuly commented");
       setCommentState(res.data.message)
